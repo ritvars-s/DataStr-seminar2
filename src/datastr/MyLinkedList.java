@@ -52,5 +52,16 @@ public class MyLinkedList<Ttype> {
 		
 		
 	}
+	public void print() throws Exception {
+		if(isEmpty()) {
+			throw new Exception("Saraksta nav elementu ko printet");
+		}
+		MyNode<Ttype> currentNode = firstNode;
+		while (currentNode != null) {
+			System.out.print(currentNode.getElement());
+			currentNode = currentNode.getNextNode();
+		}
+		System.out.println();
+	}
 	
 }
