@@ -140,10 +140,22 @@ public class MyLinkedList<Ttype> {
 			howManyElements--;
 		}
 		else {
-			MyNode<Ttype> currentNode = firstNode;
-			for (int i = 1; i <= position - 1; i++) {
-				currentNode = currentNode.getNextNode();	
+			MyNode<Ttype> currentNode = null;
+			if(howManyElements / 2 > position) {
+				currentNode = firstNode;
+				for (int i = 1; i <= position; i++) {
+					currentNode = currentNode.getNextNode();	
+				}
 			}
+			
+			else{
+				currentNode = lastNode;
+				for (int i = howManyElements; i > position + 1; i--) {
+					currentNode = currentNode.getPreviousNode();	
+				}
+				
+			}
+			
 			MyNode<Ttype> leftNode = currentNode.getPreviousNode();
 			MyNode<Ttype> rightNode = currentNode.getNextNode();
 			leftNode.setNextNode(rightNode);
@@ -151,5 +163,33 @@ public class MyLinkedList<Ttype> {
 			howManyElements--;
 		}
 	}
+	//get by position
+	
+	public MyNode<Ttype> getByPosition(int position) throws Exception{
+		if (isEmpty() == true) {
+			throw new Exception("Ir tukss");
+		}
+		if (position >= howManyElements) {
+			throw new Exception("Pozicija nevar but lielaka par elemntu skaitu");
+		}
+		if (position < 0) {
+			throw new Exception("Pozicija newvar but mazaka par 0");
+		}
+		if (position == 0) {
+			return firstNode;
+		}
+		else if (position == howManyElements - 1) {
+			return lastNode;
+		}
+		else {
+			MyNode<Ttype> currentNode = firstNode;
+			for (int i = 1; i <= position; i++) {
+				currentNode = currentNode.getNextNode();	
+			}
+			return currentNode;
+		}
+	}
+	//search
+	//makeEmpty
 	
 }

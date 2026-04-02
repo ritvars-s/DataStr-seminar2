@@ -17,6 +17,15 @@ public class MainService {
 			symbols.print();
 			symbols.add('s', 5);
 			symbols.print();
+			System.out.println("dzesana============");
+			symbols.remove(0);
+			symbols.print();
+			symbols.remove(5);
+			symbols.print();
+			symbols.remove(2);
+			symbols.print();
+			System.out.println("getbyposition============");
+			System.out.println(symbols.getByPosition(2));
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
