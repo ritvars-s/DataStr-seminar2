@@ -120,7 +120,7 @@ public class MyLinkedList<Ttype> {
 		}
 	}
 	public void remove(int position) throws Exception{
-		if (isEmpty() == true) {
+		if (isEmpty()) {
 			throw new Exception("Ir tukss");
 		}
 		if (position >= howManyElements) {
@@ -165,8 +165,8 @@ public class MyLinkedList<Ttype> {
 	}
 	//get by position
 	
-	public MyNode<Ttype> getByPosition(int position) throws Exception{
-		if (isEmpty() == true) {
+	public Ttype getByPosition(int position) throws Exception{
+		if (isEmpty()) {
 			throw new Exception("Ir tukss");
 		}
 		if (position >= howManyElements) {
@@ -176,19 +176,37 @@ public class MyLinkedList<Ttype> {
 			throw new Exception("Pozicija newvar but mazaka par 0");
 		}
 		if (position == 0) {
-			return firstNode;
+			return firstNode.getElement();
 		}
 		else if (position == howManyElements - 1) {
-			return lastNode;
+			return lastNode.getElement();
 		}
 		else {
 			MyNode<Ttype> currentNode = firstNode;
 			for (int i = 1; i <= position; i++) {
 				currentNode = currentNode.getNextNode();	
 			}
-			return currentNode;
+			return currentNode.getElement();
 		}
 	}
+	public ArrayList<Integer> search(Ttype element) throws Exception{
+		if (isEmpty()) {
+			throw new Exception("Ir tukss");
+		}
+		ArrayList<Integer> allPositions = new ArrayList<Integer>();
+		MyNode<Ttype> currentNode = firstNode;
+		for (int i = 0; i < howManyElements; i++) {
+			if (element == currentNode.getElement()) {
+				allPositions.add(i);
+			}
+			currentNode = currentNode.getNextNode();	
+		}
+		if (allPositions.isEmpty()) {
+			throw new Exception("Nav neviena tada elementa");
+		}
+		return allPositions;
+	}
+	
 	//search
 	//makeEmpty
 	

@@ -1,11 +1,14 @@
 package service;
 
+import java.util.ArrayList;
+
 import datastr.MyLinkedList;
 
 public class MainService {
 	public static void main(String[] arg) {
 		MyLinkedList<Character> symbols = new MyLinkedList<Character>();
 		try {
+			symbols.add('a');	
 			symbols.add('a');	
 			symbols.add('b');	
 			symbols.add('c');	
@@ -26,6 +29,11 @@ public class MainService {
 			symbols.print();
 			System.out.println("getbyposition============");
 			System.out.println(symbols.getByPosition(2));
+			System.out.println("search============");
+			ArrayList<Integer> positions = new ArrayList<Integer>();
+			positions = symbols.search('a');
+			System.out.print(positions);
+			
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
