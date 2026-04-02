@@ -119,5 +119,37 @@ public class MyLinkedList<Ttype> {
 			howManyElements++;
 		}
 	}
+	public void remove(int position) throws Exception{
+		if (isEmpty() == true) {
+			throw new Exception("Ir tukss");
+		}
+		if (position >= howManyElements) {
+			throw new Exception("Pozicija nevar but lielaka par elemntu skaitu");
+		}
+		if (position < 0) {
+			throw new Exception("Pozicija newvar but mazaka par 0");
+		}
+		if (position == 0) {
+			firstNode = firstNode.getNextNode();
+			firstNode.setPreviousNode(null);
+			howManyElements--;
+		}
+		else if (position == howManyElements - 1) {
+			lastNode = lastNode.getPreviousNode();
+			lastNode.setNextNode(null);
+			howManyElements--;
+		}
+		else {
+			MyNode<Ttype> currentNode = firstNode;
+			for (int i = 1; i <= position - 1; i++) {
+				currentNode = currentNode.getNextNode();	
+			}
+			MyNode<Ttype> leftNode = currentNode.getPreviousNode();
+			MyNode<Ttype> rightNode = currentNode.getNextNode();
+			leftNode.setNextNode(rightNode);
+			rightNode.setPreviousNode(leftNode);
+			howManyElements--;
+		}
+	}
 	
 }
