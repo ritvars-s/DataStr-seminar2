@@ -15,6 +15,8 @@ public class MainService {
 			symbols.print();
 			symbols.add('x', 5);
 			symbols.print();
+			symbols.add('s', 5);
+			symbols.print();
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());

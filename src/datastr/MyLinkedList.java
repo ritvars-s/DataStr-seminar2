@@ -85,7 +85,7 @@ public class MyLinkedList<Ttype> {
 			firstNode = newNode;
 			howManyElements++;
 		}
-		
+		//preksa
 		if(position == 0) {
 			MyNode<Ttype> newNode= new MyNode<Ttype>(newElement);
 			
@@ -95,18 +95,28 @@ public class MyLinkedList<Ttype> {
 			firstNode = newNode;
 			howManyElements++;
 		}
-		
+		//beigas
 		else if(position == howManyElements){
-			MyNode<Ttype> newNode = new MyNode<Ttype>(newElement);
-			lastNode.setNextNode(newNode);
-			newNode.setPreviousNode(lastNode);
-			
-			lastNode = newNode;
-			howManyElements++;
+			add(newElement);
 		}
 		// pavidu
 		else {
 			MyNode<Ttype> newNode = new MyNode<Ttype>(newElement);
+			
+			MyNode<Ttype> currentNode = firstNode;
+			
+
+			for (int i = 1; i <= position - 1; i++) {
+				currentNode = currentNode.getNextNode();	
+			}
+			MyNode<Ttype> leftNode = currentNode;
+			MyNode<Ttype> rightNode = currentNode.getNextNode();
+			
+			leftNode.setNextNode(newNode);
+			newNode.setPreviousNode(leftNode);
+			newNode.setNextNode(rightNode);
+			rightNode.setPreviousNode(newNode);
+			howManyElements++;
 		}
 	}
 	
